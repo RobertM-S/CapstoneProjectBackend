@@ -31,10 +31,32 @@ public class FoodRestController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> getFoodById(@PathVariable int id){
+	public ResponseEntity<Object> getFood(@PathVariable int id){
 		Map<String, Object> map = new HashMap<>();
 		try {
-			map.put("food", foodService.getFoodById(id));
+			map.put("food", foodService.getFood(id));
+			return ResponseEntity.ok(map);
+		} catch (RuntimeException e) {
+			return ResponseEntity.badRequest().body(map);
+		}
+	}
+	
+	@GetMapping("/basket/{id}")
+	public ResponseEntity<Object> getFoodFromBasket(@PathVariable int id){
+		Map<String, Object> map = new HashMap<>();
+		try {
+			map.put("food", foodService.getFoodFromBasket(id));
+			return ResponseEntity.ok(map);
+		} catch (RuntimeException e) {
+			return ResponseEntity.badRequest().body(map);
+		}
+	}
+	
+	@GetMapping("/menu/{rid}/{fid}")
+	public ResponseEntity<Object> getFoodFromBasket(@PathVariable int rid, @PathVariable int fid){
+		Map<String, Object> map = new HashMap<>();
+		try {
+			map.put("food", foodService.getMenuDetails(rid, fid));
 			return ResponseEntity.ok(map);
 		} catch (RuntimeException e) {
 			return ResponseEntity.badRequest().body(map);

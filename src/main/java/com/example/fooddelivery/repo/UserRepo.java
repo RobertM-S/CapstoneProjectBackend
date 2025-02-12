@@ -14,4 +14,5 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 	  @Query(value = "select a.aid, a.city, a.postcode, a.street, a.number from address a join useraddress on useraddress.aid = a.aid join user on user.uid = useraddress.uid where user.uid = ?;", nativeQuery = true)
 	  List<Address> findAllAddressesOfUser(int userId);
 	
+	  List<User> findByUsername(String username);
 }

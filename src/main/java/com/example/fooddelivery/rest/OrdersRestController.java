@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,14 +46,15 @@ public class OrdersRestController {
 		}
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping
-	public ResponseEntity<Object> addOrders(@RequestBody Orders orders){
+	public boolean addOrders(@RequestBody Orders[] orders){
 		Map<String, Object> map = new HashMap<>();
 		try {
 			map.put("orders", ordersService.addNewOrders(orders));
-			return ResponseEntity.ok(map);
+			return true;
 		} catch (RuntimeException e) {
-			return ResponseEntity.badRequest().body(map);
+			return false;
 		}
 	}
 	

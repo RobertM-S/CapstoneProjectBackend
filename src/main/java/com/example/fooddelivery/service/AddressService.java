@@ -49,4 +49,9 @@ public class AddressService {
 		return addressrepo.findById(id).get();
 	}
 	
+	public List<Address> getAddressByUid(int uid){
+		return addressrepo.findByUid(uid);
+	}
+	
+	
 }

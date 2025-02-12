@@ -76,6 +76,28 @@ public class RestaurantRestController {
 		}
 	}
 	
+	@GetMapping("/address/{address}")
+	public ResponseEntity<Object> findAllRestaurantsByPostcode(@PathVariable String address){
+		Map<String, Object> map = new HashMap<>();
+		try {
+			map.put("restaurant", restaurantService.findAllRestaurantsByPostcode(address));
+			return ResponseEntity.ok(map);
+		} catch (RuntimeException e) {
+			return ResponseEntity.badRequest().body(map);
+		}
+	}
+	
+	@GetMapping("/address/{address}/{foodtype}")
+	public ResponseEntity<Object> findAllRestaurantsByPostcodeAndFoodtype(@PathVariable String address, @PathVariable String foodtype){
+		Map<String, Object> map = new HashMap<>();
+		try {
+			map.put("restaurant", restaurantService.findAllRestaurantsByPostcodeAndFoodtype(address, foodtype));
+			return ResponseEntity.ok(map);
+		} catch (RuntimeException e) {
+			return ResponseEntity.badRequest().body(map);
+		}
+	}
+	
 	@PostMapping
 	public ResponseEntity<Object> addRestaurant(@RequestBody Restaurant restaurant){
 		Map<String, Object> map = new HashMap<>();

@@ -56,4 +56,9 @@ public class UserService {
 		return userrepo.findAllAddressesOfUser(uid);
 	}
 	
+	public List<User> findByUsername(String username){
+		return userrepo.findByUsername(username);
+	}
+	
+	
 }

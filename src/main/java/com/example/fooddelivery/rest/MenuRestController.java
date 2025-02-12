@@ -31,4 +31,15 @@ public class MenuRestController {
 		return menuService.getAllMenus();
 	}
 
+	@GetMapping("/{rid}/{fid}")
+	public ResponseEntity<Object> getPriceOfFood(@PathVariable int rid, @PathVariable int fid){
+		Map<String, Object> map = new HashMap<>();
+		try {
+			map.put("restaurant", menuService.findPriceOfFood(rid, fid));
+			return ResponseEntity.ok(map);
+		} catch (RuntimeException e) {
+			return ResponseEntity.badRequest().body(map);
+		}
+	}
+	
 }

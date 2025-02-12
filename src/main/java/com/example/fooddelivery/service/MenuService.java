@@ -23,4 +23,9 @@ public class MenuService {
 		return menurepo.findAll();
 	}
 	
+	public List<Menu> findPriceOfFood(int rid, int fid) {
+
+		return menurepo.getMenuByRidAndFid(rid, fid);
+	}
+	
 }

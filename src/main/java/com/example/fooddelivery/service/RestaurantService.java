@@ -66,4 +66,15 @@ public class RestaurantService {
 		return restaurantrepo.findAllRestaurantsByCuisine(cuisine);
 	}
 	
+	public List<Restaurant> findAllRestaurantsByPostcode(String address) {
+		address = address.substring(0,4);
+		return restaurantrepo.findAllRestaurantsByPostcode(address);
+	}
+	
+	public List<Restaurant> findAllRestaurantsByPostcodeAndFoodtype(String address, String foodtype){
+		address = address.substring(0,4);
+		foodtype = foodtype.toUpperCase();
+		return restaurantrepo.findAllRestaurantsByPostcodeAndFoodtype(address, foodtype, foodtype);	
+	}
+	
 }

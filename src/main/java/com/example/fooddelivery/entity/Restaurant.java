@@ -17,6 +17,7 @@ public class Restaurant {
 	private int rid;
 	private String restaurantname;
 	private String description;
+	private String restaurantimage;
 //	private Address address;
 //	private String[] cuisine;
 	
@@ -28,9 +29,7 @@ public class Restaurant {
     
     @OneToMany(mappedBy = "restaurant")
     Set<Restaurantaddress> restaurantAddress;
-	
-    @OneToMany(mappedBy = "restaurant")
-    Set<Orders> orders;
+    
     
 	public Restaurant() {}
 
@@ -82,6 +81,14 @@ public class Restaurant {
 //	public void setCuisine(String[] cuisine) {
 //		this.cuisine = cuisine;
 //	}
+
+	public String getRestaurantimage() {
+		return restaurantimage;
+	}
+
+	public void setRestaurantimage(String restaurantimage) {
+		this.restaurantimage = restaurantimage;
+	}
 
 	@Override
 	public String toString() {

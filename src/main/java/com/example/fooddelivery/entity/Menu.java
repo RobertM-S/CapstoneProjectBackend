@@ -13,12 +13,7 @@ public class Menu {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "mid")
-	private int menuid;
-	
-    @ManyToOne
-    @JoinColumn(name = "fid")
-	private Food food;
+	private int mid;
     
     @ManyToOne
     @JoinColumn(name = "rid")
@@ -26,30 +21,23 @@ public class Menu {
     
 	private double price;
 	
+	private String image;
+	
 	public Menu() {}
 
-	public Menu(int menuid, Food food, Restaurant restaurant, double price) {
+	public Menu(int mid, double price, String image) {
 		super();
-		this.menuid = menuid;
-		this.food = food;
-		this.restaurant = restaurant;
+		this.mid = mid;
 		this.price = price;
+		this.image = image;
 	}
 
-	public int getMenuid() {
-		return menuid;
+	public int getmid() {
+		return mid;
 	}
 
-	public void setMenuid(int menuid) {
-		this.menuid = menuid;
-	}
-
-	public Food getFood() {
-		return food;
-	}
-
-	public void setFood(Food food) {
-		this.food = food;
+	public void setmid(int mid) {
+		this.mid = mid;
 	}
 
 	public Restaurant getRestaurant() {
@@ -67,10 +55,18 @@ public class Menu {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	@Override
 	public String toString() {
-		return "Menu [menuid=" + menuid + ", food=" + food + ", restaurant=" + restaurant + ", price=" + price + "]";
+		return "Menu [mid=" + mid + ", restaurant=" + restaurant + ", price=" + price + "]";
 	}
 	
 }

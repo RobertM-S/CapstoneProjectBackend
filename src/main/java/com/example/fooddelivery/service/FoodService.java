@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.fooddelivery.entity.Checkout;
 import com.example.fooddelivery.entity.Food;
 import com.example.fooddelivery.repo.FoodRepo;
 
@@ -22,7 +23,7 @@ public class FoodService {
 	}
 	
 	public List<Food> getAllFoods(){
-		return foodrepo.findAll();
+		return foodrepo.getAllFoods();
 	}
 	
 	public Food addNewFood(Food food) {
@@ -45,10 +46,18 @@ public class FoodService {
 		return true;
 	}
 	
-	public Food getFoodById(int id){
+	public Food getFood(int id){
 		if(!foodrepo.existsById(id))
 			throw new EntityNotFoundException(id+" not found");
-		return foodrepo.findById(id).get();
+		return foodrepo.getFood(id);
+	}
+	
+	public List<Checkout> getFoodFromBasket(int id) {
+		return foodrepo.getFoodFromBasket(id);
+	}
+	
+	public Food getMenuDetails(int rid, int fid) {
+		return foodrepo.getMenuDetails(rid, fid);
 	}
 	
 }

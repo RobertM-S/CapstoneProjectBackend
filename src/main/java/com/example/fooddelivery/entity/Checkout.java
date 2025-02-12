@@ -17,32 +17,26 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 
 @Entity
-public class Food {
+public class Checkout {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int mid;
 	private int fid;
 	private String foodname;
-	private String description;
 	private String image;
-    @NotFound(action = NotFoundAction.IGNORE)
 	private double price;
+	private int quantity;
+	private double totalprice;
+	private int rid;
 	    
-	public Food() {}
-	
-	public Food(int fid, String foodname, String description) {
-		super();
-		this.fid = fid;
-		this.foodname = foodname;
-		this.description = description;
-	}
+	public Checkout() {}
 
-	public int getFoodid() {
+	public int getFid() {
 		return fid;
 	}
 
-	public void setFoodid(int fid) {
+	public void setFid(int fSid) {
 		this.fid = fid;
 	}
 
@@ -54,12 +48,12 @@ public class Food {
 		this.foodname = foodname;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getImage() {
+		return image;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public double getPrice() {
@@ -70,17 +64,35 @@ public class Food {
 		this.price = price;
 	}
 
-	public String getImage() {
-		return image;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void seImage(String image) {
-		this.image = image;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getTotalprice() {
+		return totalprice;
+	}
+
+	public void setTotalprice(double totalprice) {
+		this.totalprice = totalprice;
+	}
+	
+
+	public int getRid() {
+		return rid;
+	}
+
+	public void setRid(int rid) {
+		this.rid = rid;
 	}
 
 	@Override
 	public String toString() {
-		return "Food [foodid=" + fid + ", foodname=" + foodname + ", description=" + description + "]";
+		return "Checkout [foodid=" + fid + ", foodname=" + foodname + ", image=" + image + ", price=" + price
+				+ ", quantity=" + quantity + ", totalprice=" + totalprice + "]";
 	}
 	
 }

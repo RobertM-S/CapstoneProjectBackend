@@ -13,30 +13,24 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int oid;
-	
-    @ManyToOne
-    @JoinColumn(name = "fid")
-	private Food food;
-    
-    @ManyToOne
-    @JoinColumn(name = "uid")
-	private User user;
-    
-    @ManyToOne
-    @JoinColumn(name = "rid")
-	private Restaurant restaurant;
-    
+	private int fid;
+	private int rid;
+	private Integer uid;
     private int orderblock;
+    private double totalprice;
+    private int quantity;
     
     public Orders() {}
 
-	public Orders(int oid, Food food, User user, Restaurant restaurant, int orderblock) {
+	public Orders(int oid, int fid, int rid, Integer uid, int orderblock, double totalprice, int quantity) {
 		super();
 		this.oid = oid;
-		this.food = food;
-		this.user = user;
-		this.restaurant = restaurant;
+		this.fid = fid;
+		this.rid = rid;
+		this.uid = uid;
 		this.orderblock = orderblock;
+		this.totalprice = totalprice;
+		this.quantity = quantity;
 	}
 
 	public int getOid() {
@@ -47,28 +41,28 @@ public class Orders {
 		this.oid = oid;
 	}
 
-	public Food getFood() {
-		return food;
+	public int getFid() {
+		return fid;
 	}
 
-	public void setFood(Food food) {
-		this.food = food;
+	public void setFid(int fid) {
+		this.fid = fid;
 	}
 
-	public User getUser() {
-		return user;
+	public int getRid() {
+		return rid;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setRid(int rid) {
+		this.rid = rid;
 	}
 
-	public Restaurant getRestaurant() {
-		return restaurant;
+	public Integer getUid() {
+		return uid;
 	}
 
-	public void setRestaurant(Restaurant restaurant) {
-		this.restaurant = restaurant;
+	public void setUid(Integer uid) {
+		this.uid = uid;
 	}
 
 	public int getOrderblock() {
@@ -79,10 +73,26 @@ public class Orders {
 		this.orderblock = orderblock;
 	}
 
+	public double getTotalprice() {
+		return totalprice;
+	}
+
+	public void setTotalprice(double totalprice) {
+		this.totalprice = totalprice;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	@Override
 	public String toString() {
-		return "Orders [oid=" + oid + ", food=" + food + ", user=" + user + ", restaurant=" + restaurant
-				+ ", orderblock=" + orderblock + "]";
+		return "Orders [oid=" + oid + ", fid=" + fid + ", rid=" + rid + ", uid=" + uid + ", orderblock=" + orderblock
+				+ ", totalprice=" + totalprice + ", quantity=" + quantity + "]";
 	}
     
 }

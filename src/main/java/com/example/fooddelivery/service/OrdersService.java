@@ -29,11 +29,16 @@ public class OrdersService {
 		return ordersrepo.findAll();
 	}
 	
-	public Orders addNewOrders(Orders orders) {
-		if(ordersrepo.existsById(orders.getOid())) {
-			throw new EntityExistsException("Cannot add "+orders.getOid()+" already exists");
+	public boolean addNewOrders(Orders[] orders) {
+		int lastOrder = ordersrepo.getLastOrderblock();
+		for(Orders order : orders) {
+			if(order.getUid() == 0) {
+				order.setUid(null);
+			}
+			order.setOrderblock(lastOrder+1);
+			ordersrepo.save(order);
 		}
-		return ordersrepo.save(orders);
+		return true;
 	}
 	
 	public Orders updateOrders(Orders orders){
